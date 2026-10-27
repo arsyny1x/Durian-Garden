@@ -1,3 +1,4 @@
+repeat task.wait() until game:IsLoaded()
 --==================================================
 -- Services & Variables
 --==================================================
@@ -26,6 +27,12 @@ local SellDurians = Remotes:WaitForChild("SellDurians")
 local DurianWarehouse = workspace:WaitForChild("Map"):WaitForChild("DurianWarehouse")
 local SellFruitsNpc = DurianWarehouse:WaitForChild("Flex_Guy"):WaitForChild("RootPart")
 local SeedShopNpc = DurianWarehouse:WaitForChild("ShanaKung")
+
+for _, v in workspace.Map.Bases:GetDescendants() do
+    if v:IsA("ProximityPrompt") and v.Name == "PlotPrompt" then
+        v.Enabled = false
+    end
+end
 
 -- Global Configuration & Environment
 local _env = getgenv()
